@@ -22,6 +22,8 @@ let vertices = [];
 //保存所有顶点对应的相邻顶点  邻接表
 let adjList = new Dictionary();
 
+let time = 0;
+
 const initColors = () => {
   let colors = {};
   for (let i = 0; i < vertices.length; i++) {
@@ -29,6 +31,27 @@ const initColors = () => {
   }
   return colors;
 };
+
+//DFS 递归函数
+const dfsVisit = (u,color,callback,d,f)=>{
+	color[u] = "gray";
+	d[u] = ++time;
+	if(callback){
+		callback(u);
+	}
+
+	let otherVertices = adjList.get(u);
+	for(let i=0;i<otherVertices.length;i++){
+		let w = otherVertices[i];
+		if(color[w] === "white"){
+
+			dfsVisit(w,color,callback,d,f);
+		}
+	}
+
+	f[u] = ++time;
+	color[u] = "black";
+}
 
 class Graph {
   //添加顶点，并初始化
@@ -133,7 +156,37 @@ class Graph {
 			distances:d,
 			predecessors:pre
 		}
-  }
+	}
+	
+	//DFS 广度 优先搜索  不需要起点
+	DFS(callback){
+
+		//发现时间
+		let d = {};
+		//探索完成时间
+		let f = {};
+
+		for(let i =0;i<vertices.length;i++){
+			let n = vertices[i];
+			d[n] = null;
+			f[n] = null;
+		}
+
+		let color = initColors();
+		for(let i =0;i<vertices.length;i++){
+			let w = vertices[i];
+			if(color[w] === "white"){
+				dfsVisit(vertices[i],color,callback,d,f);
+			}
+		}
+
+		return {
+			discovery:d,
+			finish:f
+		}
+	}
+
+	// 最短路径算法  Dijkstra  贪心算法
 }
 
 export default Graph;

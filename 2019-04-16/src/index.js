@@ -10,4 +10,7 @@
  */
 
 //目标一 示例
-import "./graph/index";
+// import "./graph/index";
+
+//排序算法
+import "./sort/index";
