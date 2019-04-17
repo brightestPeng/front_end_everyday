@@ -3,23 +3,23 @@ import ArrayList from "./ArrayList";
 
 let arr = new ArrayList();
 
-let others = [2,1,5,4,6,3];
+// let others = [2,1,5,4,6,3];
 
-for(let i=0;i<others.length;i++){
-	arr.insert(others[i]);
-}
-
-// let arrs = [];
-
-// function testSort(num){
-// 	for(let i=num;i>0;i--){
-// 		let key = parseInt(Math.random() * num);
-// 		arr.insert(key);
-// 		arrs.push(key);
-// 	}
+// for(let i=0;i<others.length;i++){
+// 	arr.insert(others[i]);
 // }
 
-// testSort(1000000);
+let arrs = [];
+
+function testSort(num){
+	for(let i=num;i>0;i--){
+		let key = parseInt(Math.random() * num);
+		arr.insert(key);
+		// arrs.push(key);
+	}
+}
+
+testSort(1000000);
 
 arr.toString();
 
@@ -36,11 +36,11 @@ console.time();
 
 //归并排序 fixfox 自带sort  10000  28ms
 // arrs.sort((a,b)=>a<b);
-// arr.mergeSort();
+arr.mergeSort();
 
 //快速排序  chrome 自带sort 10000 2ms
 // arrs.sort((a,b)=>a<b);
-arr.quickSort();
+// arr.quickSort();
 
 console.timeEnd();
 

@@ -38,15 +38,16 @@ const mergeSortSrc = array => {
 };
 
 const getIndex = (array, left, right) => {
-	let m = Math.floor((left + right) / 2),
-	l=left,r=right;
 
+	let m = array[Math.floor((left + right) / 2)],
+  l=left,r=right;
+  
 	while(l<=r){
-		if(l<array[m]){
+		while(array[l]<m){
 			l++;
 		}
 
-		if(array[m]<r){
+		while(m<array[r]){
 			r--;
 		}
 
@@ -63,12 +64,10 @@ const getIndex = (array, left, right) => {
 const quick = (array,left,right) => {
 	let index;
 
-	console.log(left);
+
 
   if (array.length > 1) {
 		index = getIndex(array, left, right);
-		
-
 
 		if(left<index-1){
 			quick(array,left,index-1);
