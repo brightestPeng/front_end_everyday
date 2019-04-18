@@ -24,6 +24,15 @@ let adjList = new Dictionary();
 
 let time = 0;
 
+let graph = [
+  [0, 2, 4, 0, 0, 0],
+  [0, 0, 1, 4, 2, 0],
+  [0, 0, 0, 0, 3, 0],
+  [0, 0, 0, 0, 0, 2],
+  [0, 0, 0, 3, 0, 2],
+  [0, 0, 0, 0, 0, 0]
+];
+
 const initColors = () => {
   let colors = {};
   for (let i = 0; i < vertices.length; i++) {
@@ -33,25 +42,41 @@ const initColors = () => {
 };
 
 //DFS 递归函数
-const dfsVisit = (u,color,callback,d,f)=>{
-	color[u] = "gray";
-	d[u] = ++time;
-	if(callback){
-		callback(u);
-	}
+const dfsVisit = (u, color, callback, d, f) => {
+  color[u] = "gray";
+  d[u] = ++time;
+  if (callback) {
+    callback(u);
+  }
 
-	let otherVertices = adjList.get(u);
-	for(let i=0;i<otherVertices.length;i++){
-		let w = otherVertices[i];
-		if(color[w] === "white"){
+  let otherVertices = adjList.get(u);
+  for (let i = 0; i < otherVertices.length; i++) {
+    let w = otherVertices[i];
+    if (color[w] === "white") {
+      dfsVisit(w, color, callback, d, f);
+    }
+  }
 
-			dfsVisit(w,color,callback,d,f);
-		}
-	}
+  f[u] = ++time;
+  color[u] = "black";
+};
 
-	f[u] = ++time;
-	color[u] = "black";
-}
+//最短距离
+const minDistance = (dist, visited) => {
+  var min = Infinity,
+		minIndex = -1;
+		
+		console.log(dist,visited);
+
+  for (let i = 0; i < dist.length; i++) {
+    if (visited[i] === false && dist[i] <= min) {
+      min = dist[i];
+      minIndex = i;
+    }
+  }
+
+  return minIndex;
+};
 
 class Graph {
   //添加顶点，并初始化
@@ -99,28 +124,28 @@ class Graph {
     }
   }
 
-	minDistancesToAllVertices(v){
-		const { predecessors } = this.distanceParams(v);
-		let stack = new Stack();
-		
-		for(let i=0;i<vertices.length;i++){	
-			let w = vertices[i];
-			if(w === v)	{
-				continue;
-			};
+  minDistancesToAllVertices(v) {
+    const { predecessors } = this.distanceParams(v);
+    let stack = new Stack();
 
-			while(predecessors[w] !== null){
-				stack.append(w);
-				w = predecessors[w];
-			}
-			stack.append(w);
-			let str = stack.pop();
-			while(!stack.isEmpty()){
-				str += `-${stack.pop()}`;
-			}
-			console.log(str);
-		}
-	}
+    for (let i = 0; i < vertices.length; i++) {
+      let w = vertices[i];
+      if (w === v) {
+        continue;
+      }
+
+      while (predecessors[w] !== null) {
+        stack.append(w);
+        w = predecessors[w];
+      }
+      stack.append(w);
+      let str = stack.pop();
+      while (!stack.isEmpty()) {
+        str += `-${stack.pop()}`;
+      }
+      console.log(str);
+    }
+  }
 
   //最短路径
   distanceParams(v) {
@@ -139,54 +164,107 @@ class Graph {
 
     while (!queue.isEmpty()) {
       let u = queue.dequeue();
-			let otherVertices = adjList.get(u);
+      let otherVertices = adjList.get(u);
 
       for (let i = 0; i < otherVertices.length; i++) {
-				let w = otherVertices[i];
+        let w = otherVertices[i];
         if (colors[w] === "white") {
-					colors[w] = "gray";
-					d[w] = d[u] + 1;
-					pre[w] = u;
+          colors[w] = "gray";
+          d[w] = d[u] + 1;
+          pre[w] = u;
           queue.enqueue(w);
         }
       }
-		}
-		
-		return {
-			distances:d,
-			predecessors:pre
-		}
+    }
+
+    return {
+      distances: d,
+      predecessors: pre
+    };
+  }
+
+  //DFS 广度 优先搜索  不需要起点
+  DFS(callback) {
+    //发现时间
+    let d = {};
+    //探索完成时间
+    let f = {};
+
+    for (let i = 0; i < vertices.length; i++) {
+      let n = vertices[i];
+      d[n] = null;
+      f[n] = null;
+    }
+
+    let color = initColors();
+    for (let i = 0; i < vertices.length; i++) {
+      let w = vertices[i];
+      if (color[w] === "white") {
+        dfsVisit(vertices[i], color, callback, d, f);
+      }
+    }
+
+    return {
+      discovery: d,
+      finish: f
+    };
+  }
+
+  // 最短路径算法  Dijkstra  贪心算法
+  Dijkstra(src) {
+    let dist = [],
+      visited = [],
+      length = graph.length;
+
+    for (let i = 0; i < length; i++) {
+      dist[i] = Infinity;
+      visited[i] = false;
+    }
+
+    dist[src] = 0;
+
+    for (let m = 0; m < length - 1; m++) {
+			var u = minDistance(dist, visited);
+			visited[u] = true;
+
+			console.log(u);
+
+			for (let v = 0; v < length; v++) {
+				if (
+					!visited[v] &&
+					graph[u][v] !== 0 &&
+					dist[u] != Infinity &&
+					dist[u] + graph[u][v] < dist[v]
+				) {
+					dist[v] = dist[u] + graph[u][v]
+				}
+			}
+    }
+
+		return dist;
 	}
 	
-	//DFS 广度 优先搜索  不需要起点
-	DFS(callback){
+	//动态规划法
+	floydWarshall(){
+		let dist = [],
+			length = graph.length;
 
-		//发现时间
-		let d = {};
-		//探索完成时间
-		let f = {};
-
-		for(let i =0;i<vertices.length;i++){
-			let n = vertices[i];
-			d[n] = null;
-			f[n] = null;
-		}
-
-		let color = initColors();
-		for(let i =0;i<vertices.length;i++){
-			let w = vertices[i];
-			if(color[w] === "white"){
-				dfsVisit(vertices[i],color,callback,d,f);
+		for(let i=0;i<length;i++){
+			let innerLength = graph[i].length;
+			for(let j=0;j<innerLength;j++){
+				dist[i][j] = graph[i][j];
 			}
 		}
 
-		return {
-			discovery:d,
-			finish:f
+		for(let k=0;k<length;k++){
+			for(let m=0;m<length;m++){
+				for(let n=0;n<length;n++){
+					
+				}
+			}
 		}
-	}
 
-	// 最短路径算法  Dijkstra  贪心算法
+	}
 }
 
 export default Graph;
