@@ -1,7 +1,6 @@
 //实现几种排序算法
 
 //快速排序法
-
 let arrs = [2, 3, 7, 2, 9, 5, 6];
 
 const getMiddle = (array, left, right) => {
@@ -31,7 +30,6 @@ const getMiddle = (array, left, right) => {
 };
 
 const quickSort = (arrs, left, right) => {
-  console.log(arrs);
   if (arrs.length > 1) {
     const middle = getMiddle(arrs, left, right);
 
@@ -45,6 +43,30 @@ const quickSort = (arrs, left, right) => {
   }
 };
 
-quickSort(arrs, 0, arrs.length - 1);
+// quickSort(arrs, 0, arrs.length - 1);
+
+//选择排序法
+const selectSort = arrs => {
+  for (let i = 0; i < arrs.length; i++) {
+    let j = i,
+			index = 0;
+			
+    while (j-- > 0) {
+      if (arrs[i] < arrs[j]) {
+        index = j;
+      }
+    }
+
+
+
+		if(index < i){
+			[arrs[index], arrs[i]] = [arrs[index], arrs[i]];
+		}
+
+    
+  }
+};
+
+selectSort(arrs);
 
 console.log(arrs);
