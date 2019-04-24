@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Parent</title>
+</head>
+<body>
+	<iframe src="http://child.pengwenjia.com:3000/child.html" ></iframe>
+	<p>parent</p>
+	<script>
+		var user = "peng";
+		//设置后  iframe里面的可以访问父节点的数据
+		document.domain = "pengwenjia.com";
+	</script>
+</body>
+</html>

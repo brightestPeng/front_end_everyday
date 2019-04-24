@@ -8,7 +8,7 @@ const getAjax = (url)=>{
 
 	return fetch(url,{
 		method:"GET"
-	}).then(res=>{
+	}).then(res=>{ 
 		console.log(res);
 	})
 };

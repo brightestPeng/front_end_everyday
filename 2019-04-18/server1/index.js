@@ -10,6 +10,6 @@ app.get("/", (req, res) => {
   res.send({ status: true, user: "admin" });
 });
 
-app.listen(2333, () => {
-  console.log(`listen on port 2333`);
+app.listen(3000, () => {
+  console.log(`listen on port 3000`);
 });
