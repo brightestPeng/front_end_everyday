@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<script>
+
+	</script>
+	<style>
+		#type{
+			font-size: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div id="type" >出现</div>
+	<script>
+
+	</script>
+	<script async="true" >
+		console.log(1);
+
+		setTimeout(()=>{
+			console.log(2);
+		},0);
+
+		new Promise((resolve)=>{
+			console.log(3);
+
+			resolve();
+		}).then(()=>{ console.log(4) });
+
+		setTimeout(()=>{
+			console.log(5);
+		},0);
+
+		new Promise((resolve)=>{
+			console.log(6);
+
+			resolve();
+		}).then(()=>{ console.log(7) });
+
+		console.log(8);
+
+
+	</script>
+</body>
+</html>
