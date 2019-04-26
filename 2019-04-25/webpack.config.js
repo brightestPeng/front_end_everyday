@@ -9,7 +9,7 @@ module.exports = {
 		path:__dirname + "/dist"
 	},
 	devServer:{
-		port:3000,
+		port:3001,
 		hot:true,
 		host:"127.0.0.1"
 	},
@@ -19,6 +19,16 @@ module.exports = {
 				test:/\.js$/,
 				exclude:/node_modules/,
 				use:["babel-loader"]
+			},
+			{
+				test:/\.css$/,
+				exclude:/node_modules/,
+				use:["style-loader","css-loader"]
+			},
+			{
+				test:/\.less$/,
+				exclude:/node_modules/,
+				use:["style-loader","css-loader","less-loader"]
 			}
 		]
 	},
