@@ -6,7 +6,7 @@
  */
 
 function fibonacci(num){
-    if(num <  2){
+    if(num ===  2 || n === 2){
         return 1;
     }else{
         return fibonacci(num-1)+fibonacci(n-2);
