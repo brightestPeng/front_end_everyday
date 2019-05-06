@@ -281,6 +281,15 @@ function insertNode(node,newNode){
 	}
 }
 
+//递归实现先序遍历
+function preOrderTraverNode(node,callback){
+  if(node){
+    callback(node.element);
+    preOrderTraverNode(node.left,callback);
+    preOrderTraverNode(node.right,callback);
+  }
+}
+
 //递归实现中序遍历
 function inOrderTraverNode(node,callback){
 	if(node !== null){
@@ -288,6 +297,15 @@ function inOrderTraverNode(node,callback){
 		callback(node.element);
 		inOrderTraverNode(node.right,callback);
 	}
+}
+
+//递归实现后续遍历
+function postOrderTraverNode(node,callback){
+  if(node !== null){
+    postOrderTraverNode(node.left,callback);
+    postOrderTraverNode(node.right,callback);
+    callback(node.element);
+  }
 }
 
 let items = [];
@@ -299,7 +317,15 @@ class Stack{
 
 	pop(){
 		return items.pop();
-	}
+  }
+  
+  isEmpty(){
+    return items.length === 0;
+  }
+
+  getLastElement(){
+    return items[items.length - 1];
+  }
 }
 
 
@@ -323,21 +349,69 @@ class BinarySearchTree{
 		let node = root,
 			stack = new Stack();
 
-		while(node !== null){
-			if(node.left){
-				stack.push(node.left);
-				node = node.left;
-			}else{
-				let newNode = stack.pop();
-				callback(newNode);
-				stack.push(node);
-				node = node.right;
-			}
-		}
+    while(!stack.isEmpty() || node){
+      if(node){
+        stack.push(node);
+        node = node.left;
+      }else{
+        node = stack.pop();
+        callback(node.element);
+        node = node.right;
+      }
+    }
+  }
+  
+  //先序遍历  用于打印文档结构
+  preOrderTraver(callback){
+    preOrderTraverNode(root,callback);
+  }
 
-	}
+  preOrderTraverStack(callback){
+    let stack = new Stack(),
+      node = root;
+    stack.push(root);
+
+    while(!stack.isEmpty()){
+      node = stack.pop();
+      callback(node.element);
+
+      if(node.right !== null){
+        stack.push(node.right);
+      }
+
+      if(node.left !== null){
+        stack.push(node.left);
+      }
+    }
+  }
+
+  //后序遍历   用于计算文件夹下文件大小
+  postOrderTraver(callback){
+    postOrderTraverNode(root,callback);
+  }
+
+  postOrderTraverStack(callback){
+    let stack = new Stack();
+    let node = root;
+    let parentNode = null;
 
 
+    stack.push(node);
+
+    while(!stack.isEmpty()){
+
+      parentNode = stack.getLastElement();
+
+      if(parentNode.right !== null && node !== parentNode.left && node !== parentNode.right){
+        stack.push(parentNode.right);
+      }else if(parentNode.left !== null && parentNode.left !== node){
+        stack.push(parentNode.left);
+      }else{
+         node = stack.pop();
+         callback(node.element);
+      }
+    }
+  }
 }
 
 //中序遍历
@@ -357,6 +431,18 @@ tree.insert(10);
 // 	console.log(element);
 // })
 
-tree.inOrderTraverStack((element)=>{
-	console.log(element);
+// tree.preOrderTraver((element)=>{
+// 	console.log(element,"a");
+// })
+
+// tree.preOrderTraverStack((element)=>{
+// 	console.log(element,"b");
+// })
+
+tree.postOrderTraver((element)=>{
+	console.log(element,"aaa");
+})
+
+tree.postOrderTraverStack((element)=>{
+	console.log(element,"bbb");
 })
