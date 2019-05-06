@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script src="./bubbleSort.js"></script>
+    <script src="./selectSort.js"></script>
+    <script src="./insertSort.js"></script>
+    <script src="./mergeSort.js"></script>
+    <script src="./quickSort.js"></script>
+    <!-- <script src="./linkList.js"></script> -->
+    <script src="./binarySearchTree.js"></script>
+    <!-- <script>
+        let link = new LinkList();
+        
+        for(let i=0;i<5;i++){
+            link.append(i);
+        }
+
+        console.log(link.toString());
+
+        let size = link.getLength();
+
+        for(let j=size - 1;j>=0;j--){
+            let value = link.remove(j);
+            link.append(value);
+        }
+
+        console.log(link.toString());
+
+    </script> -->
+    <script>
+        let tree = new BinarySearchTree();
+
+        tree.insert(7);
+        tree.insert(15);
+        tree.insert(5);
+        tree.insert(3);
+        tree.insert(9);
+        tree.insert(8);
+        tree.insert(10);
+        tree.insert(13);
+        tree.insert(12);
+        tree.insert(14);
+        tree.insert(20);
+        tree.insert(18);
+        tree.insert(25);
+
+        tree.order((value)=>{
+            console.log(value);
+        })
+    </script>
+</body>
+</html>

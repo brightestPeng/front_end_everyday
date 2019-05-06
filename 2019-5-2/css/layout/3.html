@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+        /*
+            双float方案
+        */
+        .main{
+
+        }
+
+        .nav{
+            float: left;
+            width: 140px;
+            background: red;
+        }
+
+        .article{
+            float: right;
+            width: calc(100% - 140px);
+            background: greenyellow;
+        }
+    </style>
+  </head>
+  <body>
+    <header>这是头部</header>
+    <main class="main">
+      <nav class="nav">
+        <ul>
+          <li>第一节</li>
+          <li>第一节</li>
+          <li>第一节</li>
+          <li>第一节</li>
+          <li>第一节</li>
+          <li>第一节</li>
+          <li>第一节</li>
+          <li>第一节</li>
+          <li>第一节</li>
+          <li>第一节</li>
+          <li>第一节</li>
+          <li>第一节</li>
+          <li>第一节</li>
+          <li>第一节</li>
+          <li>第一节</li>
+        </ul>
+      </nav>
+      <article class="article" >
+        <h2>html语义化</h2>
+        <section>
+          <h3>第一节</h3>
+          <p>这是第一节的内容。</p>
+        </section>
+        <section>
+          <h3>第二节</h3>
+          <p>这是第二节的内容。</p>
+        </section>
+      </article>
+    </main>
+  </body>
+</html>

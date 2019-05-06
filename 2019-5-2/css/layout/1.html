@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>float布局</title>
+    <style>
+        /**
+            BFC 方案  块级作用域上下文
+        */
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .nav {
+        float: left;
+        background: red;
+      }
+
+      .main,.article {
+        overflow: auto;
+        background: greenyellow;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>我是头部</h1>
+    </header>
+    <main class="main" >
+      <nav class="nav">
+        <ul>
+          <li>第一节</li>
+          <li>第二节</li>
+          <li>第三节</li>
+          <li>第四节</li>
+          <li>第四节</li>
+          <li>第四节</li>
+          <li>第四节</li>
+          <li>第四节</li>
+          <li>第四节</li>
+          <li>第四节</li>
+          <li>第四节</li>
+          <li>第四节</li>
+          <li>第四节</li>
+          <li>第四节</li>
+          <li>第四节</li>
+          <li>第四节</li>
+          <li>第四节</li>
+          <li>第四节</li>
+          <li>第四节</li>
+          <li>第四节</li>
+          <li>第四节</li>
+          <li>第四节</li>
+          <li>第四节</li>
+        </ul>
+      </nav>
+      <article class="article">
+        <h2>html语义化</h2>
+        <section>
+          <h3>第一节</h3>
+          <p>这是第一节</p>
+        </section>
+        <section>
+          <h3>第二节</h3>
+          <p>这是第二节</p>
+        </section>
+      </article>
+    </main>
+    <footer>我是尾部</footer>
+  </body>
+</html>
