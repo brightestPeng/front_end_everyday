@@ -3,20 +3,69 @@
 html,body{
 	margin: 0px;
 	width: 100%;
-	height: 100%;
 }
 
 #root{
-	height: 100%;
-	.App{
-		height: 100%;
+	.media-block{
+		background-color: gray;
+		border: 1px solid black;
 
-		.item{
-			padding: 2px;
+		.media-fig{
+			width: 30%;
 			float: left;
-			width: 33%;
-			height: 33%;
+		}
+		
+		.media-body{
+			width: 65%;
+			float: right;
+		}
+	}
+
+	.media-block:after{
+		content: " ";
+		display:block;
+		clear: both;
+	}
+
+	.media-block1{
+		background-color: gray;
+		border: 1px solid black;
+
+		.media-fig1{
+			margin-right: 5%;
+			float: left;
+		}
+		
+		.media-body1{
+			overflow: auto;
+		}
+	}
+
+	.media-block1:after{
+		content: " ";
+		display:block;
+		clear: both;
+	}
+
+	.box{
+		height: 200px;
+		width: 200px;
+		border: 1px solid #ccc;
+		.content-box{
+			width: 100px;
+			height: 100px;
+			margin:100% 100%; 
+			border: 1px solid red;
+		}
+	}
+
+	.span{
+
+		.content-span{
 			border: 1px solid #ccc;
+			margin: 10px;
+			padding: 10px;
+			height: 100px;
 		}
 	}
 }
