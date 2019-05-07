@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>盒模型的概念</title>
+	<style>
+		.w3cBox{
+			/**
+				w3c盒模型的解释   盒子不包括 padding、border、margin
+			*/
+			box-sizing: content-box;
+			width: 100px;
+			height: 100px;
+			background: red;
+
+			/*
+				padding、border 边距算在 100px之外
+			*/
+			padding: 20px;
+			border: 1px solid black;
+			margin: 50px;
+		}
+
+		.ieBox{
+			/**
+				ie盒模型的解释  盒子包括padding、border  不包括 margin
+			*/
+			box-sizing: border-box;
+			width: 100px;
+			height: 100px;
+			background: rebeccapurple;
+
+			/*
+				padding、border 边距算在 100px内
+			*/
+			padding: 20px;
+			border: 1px solid black;
+			margin: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div class="w3cBox" ></div>
+	<div class="ieBox" ></div>
+</body>
+</html>
