@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>块级格式上下文(BFC,block formmating context)</title>
+    <!-- 
+        形成块级格式上下文的条件
+        1、根元素 或 包含 块级格式上下文 的元素
+        2、浮动,float值不为none的元素
+        3、绝对定位,position为absolute 或 fixed元素
+        4、非块级元素 具有 display:inline-block,table-cell,table-caption,flex,inline-flex
+        5、块级元素具有  overflow值不为hidden的元素
+
+        块级格式上下文遵循的规则
+        1、内部box垂直堆放
+        2、会发生外边距折叠
+        3、里面每个元素的左边缘，与包含块左边缘相接触，反之，右边缘
+        4、BFC块不会与float元素重叠
+        5、BFC为隔离容器，里面不会影响外面，外面也不会影响里面
+        6、计算高度时，浮动元素也参与计算
+    -->
+    <style>
+      .box1 {
+        width: 100px;
+        height: 100px;
+        border: 1px solid red;
+        float: left;
+      }
+      .box2 {
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+
+        /* 设div为块级格式上下文 */
+        overflow: auto;
+      }
+
+      .box {
+        border: 1px solid blue;
+        overflow: auto;
+      }
+      .float {
+        float: left;
+        width: 100px;
+        height: 100px;
+        border: 1px solid green;
+      }
+
+
+      .autoBox{
+          overflow: auto;
+      }
+      .left{
+          width: 200px;
+          word-break:break-all;
+          background: gray;
+          float: left;
+      }
+      .right{
+          word-break:break-all;
+          background: gold;
+          overflow: auto;
+      }
+
+      .margin1{
+        width: 100px;
+        height: 100px;
+        background: red;
+        margin-bottom: 50px;
+      }
+      .warp{
+          overflow: auto;
+      }
+      .margin2{
+        width: 100px;
+        height: 100px;
+        background: black;
+        margin-top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <p>1、BFC区域不会与float元素重叠</p>
+    <div class="box1">box1</div>
+    <div class="box2">box2</div>
+    <p>2、浮动元素也参与计算高度</p>
+    <div class="box">
+      <div class="float">浮动元素</div>
+    </div>
+    <p>3、自适应两栏布局（BFC区域不会与float元素重叠）</p>
+    <div class="autoBox" >
+        <div class="left" >leftleftleftleftleftleftleftleftleftleftleftleftleftleftleftleftleftleftleftleftleftleftleftleftleftleft</div>
+        <div class="right" >rightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightrightright</div>
+    </div>
+    <p>4、独立空间，避免外边距折叠</p>
+    <div class="margin1" >margin1</div>
+    <div class="warp" >
+        <div class="margin2" >margin2</div>
+    </div>
+  </body>
+</html>
