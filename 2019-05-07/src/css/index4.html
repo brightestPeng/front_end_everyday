@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Vertical-align</title>
+  </head>
+  <style>
+    .inline_box {
+      width: 400px;
+      height: 400px;
+
+      line-height: 200px;
+
+      font-size: 60px;
+
+      margin-bottom: 20px;
+
+      display: inline-block;
+      border: 1px solid red;
+    }
+
+    .child {
+      vertical-align: middle;
+    }
+
+    .inner {
+      border: 1px solid black;
+    }
+
+    ul {
+      background-color: bisque;
+    }
+
+    .box {
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      background-color: rgb(124, 187, 241);
+
+      vertical-align: middle;
+    }
+
+    .ctn-block {
+      background-color: #bbb;
+    }
+    .ctn-block .child {
+      display: inline-block;
+      width: 100px;
+      background-color: aliceblue;
+    }
+    .ctn-block .child-1 {
+      height: 100px;
+      vertical-align: middle;
+    }
+    .ctn-block .child-2 {
+      height: 200px;
+      vertical-align: bottom;
+    }
+    .ctn-block .child-3 {
+      height: 300px;
+      vertical-align: middle;
+    }
+  </style>
+  <body>
+    <span class="parent">
+      <div class="inline_box"></div>
+      <span class="child">child</span>
+    </span>
+
+    <ul>
+      x
+      <li class="box"></li>
+      <li class="box"></li>
+      <li class="box"></li>
+    </ul>
+
+    <div class="ctn-block">
+      <div class="child child-1"></div>
+      <div class="child child-2"></div>
+      <div class="child child-3"></div>
+    </div>
+  </body>
+</html>

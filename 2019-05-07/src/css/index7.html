@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>垂直居中的方案</title>
+    <style>
+      .box {
+        width: 200px;
+        height: 200px;
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+        color: white;
+      }
+
+      /* 已知inner宽高 */
+      .box1 {
+        position: relative;
+      }
+      .box1 .inner {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -25px;
+        margin-top: -25px;
+        background: red;
+      }
+
+      /* 未知inner宽高 */
+      .box2 {
+        position: relative;
+      }
+      .box2 .inner {
+        background: rebeccapurple;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+			/* flex布局 */
+			.box3{
+				display: flex;
+				align-items:center;
+				justify-content: center;
+			}
+			.box3 .inner{
+				background: orange;
+			}
+
+			/* 利用vertical-align */
+			.box4{
+				text-align: center;
+			}
+			.box4 .inner{
+				display: inline-block;
+
+				vertical-align: middle;
+				background: yellow;
+			}
+			.box4::after{
+				content: " ";
+				height: 100%;
+				display: inline-block;
+
+				vertical-align: middle;
+			}
+
+			/* 利用margin auto */
+			.box5{
+				position: relative;
+			}
+			.box5 .inner{
+				width: 50px;
+        height: 50px;
+				margin: auto;
+				background: green;
+				position:absolute;
+				left: 0;
+				top: 0;
+				right: 0;
+				bottom: 0;
+			}
+
+			/* 利用表格布局  多行文本居中 */
+			.table-cell{
+				display: table-cell;
+				height: 200px;
+				width: 200px;
+				border: 1px solid #ccc;
+				text-align: center;
+				vertical-align: middle;
+			}
+			.table-cell .inner{
+				width: 50px;
+				display: inline-block;
+				background: blue;
+				word-break: break-all;
+			}
+    </style>
+  </head>
+  <body>
+    <!-- 利用absolute  margin负值 已知内部盒子宽高 -->
+    <div class="box box1">
+      <div class="inner">居中</div>
+    </div>
+
+    <!-- 利用absolute  transform定位 未知内部盒子宽高 -->
+    <div class="box box2">
+      <div class="inner">居中</div>
+    </div>
+
+    <!-- 利用flex布局 -->
+    <div class="box box3">
+      <div class="inner">居中</div>
+		</div>
+		
+		<!-- 利用baseline -->
+		<div class="box box4" >
+			<div class="inner">居中</div>
+		</div>
+
+		<!-- 利用margin auto -->
+		<div class="box box5" >
+			<div class="inner" >居中</div>
+		</div>
+
+		<!-- 多行文本居中 -->
+		<div class="table-cell" >
+			<p class="inner" >asdfasdfasdfasasasasdfasdfasdfas</p>
+		</div>
+  </body>
+</html>

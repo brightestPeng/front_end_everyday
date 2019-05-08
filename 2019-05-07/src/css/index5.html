@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style type="text/css">
+			.box{
+				width: 200px;
+				height: 200px;
+				border: 1px solid purple;
+
+				margin-bottom: 10px;
+			}
+
+			.inline-block{
+				width: 50px;
+				height: 50px;
+				border: 1px solid red;
+				display: inline-block;
+
+				vertical-align: middle;
+			}
+
+			.box::after{
+				content: " ";
+				display: inline-block;
+				/* 与父box高度相等 */
+				height: 200px;
+
+				vertical-align: middle;
+			}
+
+			.box1{
+				width: 200px;
+				height: 200px;
+				border: 1px solid purple;
+				margin-bottom: 10px;
+
+				position: relative;
+			}
+			.absolute{
+				width: 50px;
+				height: 50px;
+				border: 1px solid red;
+				position: absolute;
+				top: 50%;
+				margin-top: -25px;
+			}
+
+
+			.box2{
+				width: 200px;
+				height: 200px;
+				border: 1px solid purple;
+				margin-bottom: 10px;
+
+				line-height: 200px;
+			}
+			.box2 .inline{
+				width: 50px;
+				height: 50px;
+				border: 1px solid red;
+			}
+
+			.box3{
+				width: 200px;
+				height: 200px;
+				border: 1px solid purple;
+				margin-bottom: 10px;
+
+				display: flex;
+
+				align-items: center;
+			}
+			.box3 .flex{
+				width: 50px;
+				height: 50px;
+				border: 1px solid red;
+			}
+
+
+			.table{
+				width: 200px;
+				height: 200px;
+				border: 1px solid purple;
+				margin-bottom: 10px;
+
+				display: table;
+			}
+			.table-cell{
+				vertical-align: middle;
+				display: table-cell;
+			}
+
+    </style>
+  </head>
+  <body>
+		<!-- 垂直居中的方案 -->
+		<!-- 利用vertical-align -->
+    <div class="box" >
+			<div class="inline-block" >居中</div>
+		</div>
+		<!-- 利用绝对定位 -->
+		<div class="box1">
+			<div class="absolute" >居中</div>
+		</div>
+		<!-- 适用于行内元素定位 -->
+		<div class="box2" >
+			<span class="inline" >居中</span>
+		</div>
+		<!-- 利用flex定位 -->
+		<div class="box3" >
+			<div class="flex" >居中</div>
+		</div>
+		<!-- 利用table定位 -->
+		<div class="table" >
+			<div class="table-cell" >居中</div>
+		</div>
+
+		<!-- 水平居中方案 -->
+  </body>
+</html>

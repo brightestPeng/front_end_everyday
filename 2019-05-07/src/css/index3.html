@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .parent {
+        line-height: 1;
+        font-size: 14px;
+
+        border: 1px solid gray;
+      }
+
+      .inline-block {
+        display: inline-block;
+        border: 1px solid red;
+
+        overflow: hidden;
+      }
+
+      .child {
+        font-size: 30px;
+        border: 1px solid blue;
+        vertical-align: middle;
+      }
+
+      .other {
+        border: 1px solid purple;
+      }
+    </style>
+  </head>
+  <body>
+		<div class="other">其他元素</div>
+    <span class="parent">
+      <span class="child">
+        <span class="inline-block">display:inline-block元素</span>
+        xp子元素的文字
+      </span>
+      xp父元素的文字
+    </span>
+    <div class="other">其他元素</div>
+  </body>
+</html>
