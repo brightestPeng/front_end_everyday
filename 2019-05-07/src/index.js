@@ -1,1 +1,1 @@
-import "./prototypes/call_apply_bind";
+import "./prototypes/utils/deepClone";

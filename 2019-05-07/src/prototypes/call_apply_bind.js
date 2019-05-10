@@ -64,12 +64,12 @@ Function.prototype.myApply = function(context,arr){
 
 // }
 
-var foo = 1;
+// var foo = 1;
 
-var fooReference = {
-    base: EnvironmentRecord,
-    name: 'foo',
-    strict: false
-};
+// var fooReference = {
+//     base: EnvironmentRecord,
+//     name: 'foo',
+//     strict: false
+// };
 
-GetValue(fooReference) 
+// GetValue(fooReference) 
