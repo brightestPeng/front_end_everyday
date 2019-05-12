@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body{
+            padding: 0px;
+            margin: 0px;
+        }
+        header,footer{
+            height: 80px;
+            line-height: 80px;
+            text-align: center;
+            background: palegreen;
+        }
+        main{
+            padding: 0 200px 0 180px;
+            height: 100px;
+        }
+
+        article{
+            width: 100%;
+            float: left;
+            background: red;
+            height: 100px;
+        }
+        .left{
+            width: 180px;
+            height: 100px;
+            float: left;
+            margin-left: -100%;
+            position: relative;
+            left: -180px;
+            background: yellow;
+        }
+        .right{
+            width: 200px;
+            height: 100px;
+            margin-left: -200px;
+            position: relative;
+            left: 200px;
+            background: purple;
+            float: left;
+        }
+
+        main::after{
+            content: " ";
+            display: block;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <header>Header</header>
+    <main>
+        <article>content</article>
+        <aside class="left" >left</aside>
+        <aside class="right" >right</aside>
+    </main>
+    <footer>Footer</footer>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>水平的</title>
+    <style>
+      .box {
+        width: 200px;
+        height: 100px;
+        border: 1px solid #cccccc;
+      }
+      .inner {
+        width: 50px;
+        height: 50px;
+        background: red;
+      }
+
+      .box1 {
+        position: relative;
+      }
+      .box1 .inner {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 0);
+      }
+
+      .box2 {
+        display: flex;
+        justify-content: center;
+      }
+
+      .box3 {
+        display: table;
+        text-align: center;
+      }
+      .box3 .inner {
+        display: table-cell;
+        /* vertical-align: middle; */
+      }
+
+      .box4 {
+        position: relative;
+      }
+      .box4 .inner {
+        margin: auto;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+      }
+
+      .box5{
+        text-align: center;
+      }
+      .box5 .inner{
+          display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- position:absolute -->
+    <div class="box box1">
+      <div class="inner">inner</div>
+    </div>
+    <!-- position:flex -->
+    <div class="box box2">
+      <div class="inner">inner</div>
+    </div>
+    <!-- position:table -->
+    <div class="box box3">
+      <div class="inner">inner</div>
+    </div>
+    <!-- margin:auto -->
+    <div class="box box4">
+      <div class="inner">inner</div>
+    </div>
+    <!-- baseline -->
+    <div class="box box5">
+      <div class="inner">inner</div>
+    </div>
+  </body>
+</html>

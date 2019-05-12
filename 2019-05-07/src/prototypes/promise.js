@@ -80,7 +80,7 @@ class MyPromise {
 					setTimeout(()=>{
 						try {
 							let x = reject(reason);
-							resolve(x);
+							reject(x);
 						} catch (error) {
 							reject(error);
 						}
