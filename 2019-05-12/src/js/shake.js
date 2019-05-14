@@ -48,19 +48,36 @@ function throttle(fuc, time, options) {
   // };
 
   var throttled = function() {
-    var now = +new Date(),
-      remaining = time - (now - previous);
+		var now = +new Date(),
+			context = this,
+			args = arguments;
+
+		if (!previous && options.pre === false) previous = now;
+		var remaining = time - (now - previous);
 
     if (remaining <= 0 || remaining > time) {
-			if(timer){
-				clearTimeout(timer);
-				timer = null;
-			}
-			fuc.apply(this, arguments);
+      if (timer) {
+        clearTimeout(timer);
+        timer = null;
+      }
+      fuc.apply(context, args);
 			previous = now;
-    } else if( !timer ||  ){
+			if(!timeout) context = args = null;
+    } else if (!timer && options.final !== false) {
+      timer = setTimeout(() => {
+        previous = options.pre === false ? new Date().getTime() : 0;
+        fuc.apply(context, args);
+				timer = null;
+				if(!timeout) context = args = null;
+      }, time);
     }
-  };
+	};
+	
+	throttled.cancel = function(){
+		clearTimeout(timer);
+		timer = null;
+		previous = 0;
+	}
 
   return throttled;
 }
