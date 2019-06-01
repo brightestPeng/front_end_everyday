@@ -1,0 +1,44 @@
+#fly{
+
+}
+
+#fly header,footer{
+    height: 60px;
+    line-height: 60px;
+    background: gray;
+    text-align: center;
+}
+
+#fly .content{
+    width: 100%;
+    float: left;
+}
+
+#fly .content .center{
+    height: 100px;
+    margin: 0 180px 0 200px;
+    background: red;
+}
+
+#fly .left{
+    height: 100px;
+    width: 200px;
+    float: left;
+    margin-left: -100%;
+    background: yellow;
+}
+
+#fly .right{
+    height: 100px;
+    width: 180px;
+    float: left;
+    margin-left: -180px;
+    background: blue;
+}
+
+.clearfix{
+    content: "";
+    clear: both;
+    display: block;
+    height: 0;
+}

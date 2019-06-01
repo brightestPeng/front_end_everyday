@@ -1,0 +1,51 @@
+#vertical .content {
+  height: 200px;
+  width: 100%;
+  border: 1px solid #cccccc;
+  margin-bottom: 10px;
+}
+
+#vertical .content .box {
+  width: 100px;
+  height: 100px;
+  background: red;
+}
+
+#vertical .content .method1 {
+  position: relative;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+#vertical .content .method2 {
+  vertical-align: middle;
+  display: inline-block;
+}
+.method2Content::after {
+  height: 100%;
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.method3Content {
+  display: flex;
+  align-items: center;
+}
+
+.method4Content {
+  line-height: 200px;
+}
+
+.method4 {
+  display: inline-block;
+}
+
+.method5Content {
+  display: table;
+}
+
+.method5 {
+  display: table-cell;
+  vertical-align: middle;
+}

@@ -1,0 +1,44 @@
+
+
+#part1{
+
+}
+
+#part1 .span{
+    display: inline-block;
+    width: 100px;
+    background: red;
+    height: 100px;
+}
+
+#part1 .span2{
+    overflow: auto;
+}
+
+#part2 .span{
+    display: inline-block;
+    width: 100px;
+    background: red;
+    height: 100px;
+    margin-right: 20px;
+}
+
+#part2{
+    height: 100px;
+}
+
+#part2 .span1{
+    display: inline-block;
+    width: 100px;
+    background: red;
+    height: 50px;
+    vertical-align: middle;
+}
+
+#part2::after{
+    content: " ";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+
+}

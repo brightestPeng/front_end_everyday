@@ -1,0 +1,57 @@
+#grail{
+
+}
+
+#grail header{
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    background: gray;
+}
+
+#grail .main{
+    height: 100px;
+    padding: 0 180px 0 200px;
+}
+
+#grail .float{
+    float: left;
+    height: 100px;
+}
+
+ #grail .center{
+    width: 100%;
+    background: red;
+ }
+
+#grail .left{
+    width: 200px;
+    background: yellow;
+    margin-left: -100%;
+
+    position: relative;
+    left: -200px;
+}
+
+#grail .right{
+    width: 180px;
+    background: blue;
+    margin-left: -180px;
+
+    position: relative;
+    left: 180px;
+} 
+
+#grail .main::after{
+    content: " ";
+    display: block;
+    clear: both;
+    height: 0;
+}
+
+#grail footer{
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    background: gray;
+}

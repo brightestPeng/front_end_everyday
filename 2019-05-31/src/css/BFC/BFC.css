@@ -1,0 +1,29 @@
+#part1{
+    overflow: hidden;
+}
+
+#part1 .left{
+    height: 100px;
+    width: 100px;
+    background: red;
+    float: left;
+}
+#part1 .right{
+    overflow: hidden;
+}
+
+
+#part2{
+
+}
+
+#part2 .box{
+    height: 100px;
+    width: 100px;
+    background: red;
+    margin: 20px;
+}
+
+#part2 .bfc{
+    overflow: auto;
+}

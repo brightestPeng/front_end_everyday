@@ -1,0 +1,71 @@
+.content{
+    width: 100%;
+    height: 200px;
+    margin-bottom: 10px;
+    border: 1px solid  #cccccc;
+}
+
+.box{
+    width: 100px;
+    height: 100px;
+    background: red;
+}
+
+.method1{
+    position: relative;
+}
+
+.method1 .box{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.method2{
+    position: relative;
+}
+.method2 .box{
+    margin:auto;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.method3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.method4{
+    text-align: center;
+}
+.method4::after{
+    height: 100%;
+    content: "";
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.method4 .box{
+    vertical-align: middle;
+    display: inline-block;
+}
+
+
+.method5{
+    width: 400px;
+}
+.method5{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.method5 .box{
+    display: inline-block;
+}
